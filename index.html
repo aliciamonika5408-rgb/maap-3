@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Untuk Arya 💕</title>
+    <meta name="description" content="Pesan spesial untuk Arya dari Cia Imup">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Patrick+Hand&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating Elements Container -->
+    <div id="floating-elements"></div>
+
+    <!-- SCREEN 1: Landing -->
+    <section id="screen-landing" class="screen active">
+        <div class="landing-content">
+            <div class="envelope-container" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body">
+                    <div class="letter-peek">💌</div>
+                </div>
+                <div class="envelope-shadow"></div>
+            </div>
+            <h1 class="landing-title">Hai, <span class="name-highlight">Arya</span>... 🥺</h1>
+            <p class="landing-subtitle">Ada sesuatu yang mau aku sampaikan...</p>
+            <button class="btn-kawaii btn-open" id="btn-open">
+                <span>Buka ya? 🥺👉👈</span>
+            </button>
+            <div class="sparkle-hint">✨ tap untuk buka ✨</div>
+        </div>
+    </section>
+
+    <!-- SCREEN 2: Apology Message -->
+    <section id="screen-apology" class="screen">
+        <div class="apology-content">
+            <div class="message-bubble">
+                <div class="bubble-ears left">🌸</div>
+                <div class="bubble-ears right">🌸</div>
+                <div class="message-text" id="typewriter-text"></div>
+                <div class="typing-cursor" id="typing-cursor">|</div>
+            </div>
+            <div class="apology-emoji-row" id="apology-emojis">
+                <span>🥺</span><span>💕</span><span>😿</span><span>💗</span><span>🫶</span>
+            </div>
+            <button class="btn-kawaii btn-next hidden" id="btn-next-apology">
+                <span>Lanjut baca... 📖</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- SCREEN 3: Reasons I Love You -->
+    <section id="screen-reasons" class="screen">
+        <div class="reasons-content">
+            <h2 class="section-title">Alasan aku sayang kamu 💝</h2>
+            <div class="reasons-carousel" id="reasons-carousel">
+                <div class="reason-card" data-index="0">
+                    <div class="reason-emoji">🥰</div>
+                    <p>Kamu selalu bikin aku ketawa, bahkan di hari yang paling bete sekalipun</p>
+                </div>
+                <div class="reason-card" data-index="1">
+                    <div class="reason-emoji">🫶</div>
+                    <p>Kamu selalu sabar sama aku yang kadang menyebalkan ini</p>
+                </div>
+                <div class="reason-card" data-index="2">
+                    <div class="reason-emoji">💫</div>
+                    <p>Senyum kamu itu obat paling ampuh buat hari-hariku</p>
+                </div>
+                <div class="reason-card" data-index="3">
+                    <div class="reason-emoji">🧸</div>
+                    <p>Pelukan kamu bikin semua masalah rasanya hilang</p>
+                </div>
+                <div class="reason-card" data-index="4">
+                    <div class="reason-emoji">🌙</div>
+                    <p>Kamu adalah orang pertama yang mau aku ajak cerita setiap hari</p>
+                </div>
+                <div class="reason-card" data-index="5">
+                    <div class="reason-emoji">💕</div>
+                    <p>Karena kamu adalah kamu, dan itu sudah lebih dari cukup</p>
+                </div>
+            </div>
+            <div class="carousel-dots" id="carousel-dots"></div>
+            <button class="btn-kawaii btn-next" id="btn-next-reasons">
+                <span>Terus baca ya... 🥺</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- SCREEN 4: The Question -->
+    <section id="screen-question" class="screen">
+        <div class="question-content">
+            <div class="sad-bear">
+                <div class="bear-face">
+                    <div class="bear-ear left"></div>
+                    <div class="bear-ear right"></div>
+                    <div class="bear-eye left">
+                        <div class="tear" id="tear-left">💧</div>
+                    </div>
+                    <div class="bear-eye right">
+                        <div class="tear" id="tear-right">💧</div>
+                    </div>
+                    <div class="bear-nose"></div>
+                    <div class="bear-mouth sad" id="bear-mouth"></div>
+                </div>
+            </div>
+            <h2 class="question-text">Maafin aku ya, <span class="name-highlight">Arya</span>? 🥺</h2>
+            <p class="question-sub">Aku janji bakal lebih baik lagi...</p>
+            <div class="button-container" id="button-container">
+                <button class="btn-kawaii btn-yes" id="btn-yes">
+                    <span>Iya, aku maafin 💕</span>
+                </button>
+                <button class="btn-kawaii btn-no" id="btn-no">
+                    <span>Nggak 😤</span>
+                </button>
+            </div>
+            <p class="no-counter hidden" id="no-counter">Kamu udah coba nolak <span id="no-count">0</span> kali... tapi aku gaakan nyerah! 🥺</p>
+        </div>
+    </section>
+
+    <!-- SCREEN 5: Celebration / Love Letter -->
+    <section id="screen-celebration" class="screen">
+        <div class="celebration-content">
+            <div id="confetti-container"></div>
+            <div class="celebration-header">
+                <h2 class="celebration-title" id="celebration-title">YEAY! 🎉💕🥳</h2>
+                <p class="celebration-subtitle">Aku tau kamu emang paling baik! 🫶</p>
+            </div>
+            <div class="love-letter">
+                <div class="letter-header">
+                    <span>💌 Surat Cinta dari Cia Imup 💌</span>
+                </div>
+                <div class="letter-body">
+                    <p>Dear <strong>Arya</strong> yang paling aku sayang,</p>
+                    <br>
+                    <p>Makasih udah mau maafin aku. Aku tau aku kadang nyebelin, bikin kamu kesel, dan nggak sempurna. Tapi satu hal yang pasti: <strong>aku sayang banget sama kamu.</strong></p>
+                    <br>
+                    <p>Kamu itu spesial banget buat aku. Nggak ada yang bisa gantiin posisi kamu di hati aku. Setiap hari sama kamu itu berasa kayak hadiah paling indah.</p>
+                    <br>
+                    <p>Aku janji bakal berusaha jadi lebih baik, lebih pengertian, dan lebih sayang sama kamu. Karena kamu layak dapet yang terbaik. 💕</p>
+                    <br>
+                    <p>Jangan ngambek lagi ya? Aku kangen senyum kamu... 🥺</p>
+                    <br>
+                    <p class="letter-signature">
+                        Selamanya sayang kamu,<br>
+                        <strong class="signature-name">Cia Imup</strong> 💗
+                    </p>
+                </div>
+            </div>
+            <div class="final-message">
+                <div class="heart-beat">❤️</div>
+                <p>Aku sayang kamu, <strong>Arya</strong>. Selamanya. 🫶</p>
+            </div>
+            <button class="btn-kawaii btn-replay" id="btn-replay">
+                <span>Baca lagi dari awal 🔄</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Background Music Toggle -->
+    <button class="music-toggle" id="music-toggle" title="Toggle Musik">
+        <span id="music-icon">🔇</span>
+    </button>
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2021/10/21/audio_8b8b6deb1f.mp3?filename=gentle-piano-meditation-9692.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
