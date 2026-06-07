@@ -8,6 +8,7 @@ let currentScreen = 'screen-landing';
 let noCount = 0;
 let reasonIndex = 0;
 let reasonInterval = null;
+let musicPlaying = false;
 
 // --- DOM Elements ---
 const screens = {
@@ -24,6 +25,8 @@ const btnNextReasons = document.getElementById('btn-next-reasons');
 const btnYes = document.getElementById('btn-yes');
 const btnNo = document.getElementById('btn-no');
 const btnReplay = document.getElementById('btn-replay');
+const musicToggle = document.getElementById('music-toggle');
+const musicIcon = document.getElementById('music-icon');
 const bgMusic = document.getElementById('bg-music');
 const typewriterText = document.getElementById('typewriter-text');
 const typingCursor = document.getElementById('typing-cursor');
@@ -96,13 +99,13 @@ btnOpen.addEventListener('click', () => {
     }, 200);
     setTimeout(() => goToScreen('screen-apology'), 700);
 
-    // Langsung unmute & play musik saat tombol pertama ditekan
-    playMusic();
+    // Try to play music
+    tryPlayMusic();
 });
 
 // Also allow clicking the envelope
 document.getElementById('envelope').addEventListener('click', () => {
-    btnOpen.click(); // btnOpen handler will handle music unmute
+    btnOpen.click();
 });
 
 // --- Screen 2: Apology (Typewriter) ---
@@ -511,29 +514,86 @@ btnReplay.addEventListener('click', () => {
     goToScreen('screen-landing');
 });
 
-// --- Music: Auto-play on first interaction, no toggle ---
+// --- Music (fixed: no double playback & handles autoplay/mute) ---
 let musicPlayPromise = null;
+let userMuted = false;
 
-function playMusic() {
-    if (bgMusic.paused) {
-        bgMusic.volume = 0.3;
-        bgMusic.muted = false;
-        musicPlayPromise = bgMusic.play();
-        if (musicPlayPromise !== undefined) {
-            musicPlayPromise.catch((error) => {
-                console.log("Play failed:", error);
-            });
-        }
+// Sync play/pause events directly from the audio element to keep the visual state and global variable in sync
+bgMusic.addEventListener('play', () => {
+    musicPlaying = true;
+    musicIcon.textContent = '🎵';
+    musicToggle.classList.add('playing');
+});
+
+bgMusic.addEventListener('pause', () => {
+    musicPlaying = false;
+    musicIcon.textContent = '🔇';
+    musicToggle.classList.remove('playing');
+});
+
+function stopMusic() {
+    if (musicPlayPromise) {
+        musicPlayPromise.then(() => {
+            bgMusic.pause();
+        }).catch(() => { });
+        musicPlayPromise = null;
+    } else {
+        bgMusic.pause();
     }
 }
 
-// Start muted on load (browser allows this), unmute on first interaction
-function initAutoplay() {
+function tryPlayMusic() {
+    if (userMuted) return; // Don't play if user explicitly muted it
+    if (!bgMusic.paused) return; // Already playing
+
     bgMusic.volume = 0.3;
-    bgMusic.muted = true;
-    bgMusic.play().catch(() => { });
+
+    musicPlayPromise = bgMusic.play();
+    if (musicPlayPromise !== undefined) {
+        musicPlayPromise.catch((error) => {
+            console.log("Autoplay blocked by browser policy. Music will play upon first interaction.");
+        });
+    }
 }
 
+musicToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent trigger from global click handler
+    if (!bgMusic.paused) {
+        userMuted = true;
+        stopMusic();
+    } else {
+        userMuted = false;
+        tryPlayMusic();
+    }
+});
+
+// --- Autoplay Helper (for browser restriction bypass) ---
+function initAutoplay() {
+    // Try autoplay immediately
+    tryPlayMusic();
+
+    // Listen to first click/touch/keypress to trigger play if initial autoplay is blocked
+    const autoplayTrigger = () => {
+        if (bgMusic.paused && !userMuted) {
+            tryPlayMusic();
+        }
+        if (!bgMusic.paused || userMuted) {
+            removeListeners();
+        }
+    };
+
+    const removeListeners = () => {
+        document.removeEventListener('click', autoplayTrigger);
+        document.removeEventListener('touchstart', autoplayTrigger);
+        document.removeEventListener('keydown', autoplayTrigger);
+    };
+
+    document.addEventListener('click', autoplayTrigger, { capture: true });
+    document.addEventListener('touchstart', autoplayTrigger, { capture: true });
+    document.addEventListener('keydown', autoplayTrigger, { capture: true });
+}
+
+// Start autoplay logic
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAutoplay);
 } else {
