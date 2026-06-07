@@ -77,11 +77,25 @@ body {
 }
 
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    25% { background-position: 50% 0%; }
-    50% { background-position: 100% 50%; }
-    75% { background-position: 50% 100%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    25% {
+        background-position: 50% 0%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    75% {
+        background-position: 50% 100%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* --- Floating Elements --- */
@@ -110,12 +124,15 @@ body {
         transform: translateY(100vh) rotate(0deg) scale(0.5);
         opacity: 0;
     }
+
     10% {
         opacity: 0.7;
     }
+
     90% {
         opacity: 0.5;
     }
+
     100% {
         transform: translateY(-10vh) rotate(360deg) scale(1);
         opacity: 0;
@@ -159,6 +176,7 @@ body {
         opacity: 0;
         transform: translateY(40px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -176,8 +194,15 @@ body {
 }
 
 @keyframes envelopeBounce {
-    0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50% { transform: translateY(-15px) rotate(2deg); }
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(2deg);
+    }
 }
 
 .envelope-body {
@@ -200,7 +225,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2) 100%);
+    background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.2) 100%);
 }
 
 .envelope-flap {
@@ -215,12 +240,19 @@ body {
     z-index: 2;
     transform-origin: top;
     animation: flapWiggle 3s ease-in-out infinite;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 @keyframes flapWiggle {
-    0%, 100% { transform: rotateX(0deg); }
-    50% { transform: rotateX(15deg); }
+
+    0%,
+    100% {
+        transform: rotateX(0deg);
+    }
+
+    50% {
+        transform: rotateX(15deg);
+    }
 }
 
 .letter-peek {
@@ -231,21 +263,37 @@ body {
 }
 
 @keyframes peekUp {
-    0%, 100% { transform: translateY(5px); }
-    50% { transform: translateY(-5px); }
+
+    0%,
+    100% {
+        transform: translateY(5px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .envelope-shadow {
     width: 120px;
     height: 10px;
-    background: radial-gradient(ellipse, rgba(0,0,0,0.12) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.12) 0%, transparent 70%);
     margin: 8px auto 0;
     animation: shadowPulse 2s ease-in-out infinite;
 }
 
 @keyframes shadowPulse {
-    0%, 100% { transform: scale(1); opacity: 0.6; }
-    50% { transform: scale(0.8); opacity: 0.3; }
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(0.8);
+        opacity: 0.3;
+    }
 }
 
 .landing-title {
@@ -276,8 +324,13 @@ body {
 }
 
 @keyframes shimmerLine {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 .landing-subtitle {
@@ -297,8 +350,17 @@ body {
 }
 
 @keyframes sparkleHintPulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.05); }
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
 }
 
 /* --- Buttons --- */
@@ -324,7 +386,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transition: left 0.5s;
 }
 
@@ -344,8 +406,15 @@ body {
 }
 
 @keyframes btnPulse {
-    0%, 100% { box-shadow: 0 6px 20px var(--shadow-medium), 0 0 0 0 rgba(247, 89, 171, 0.4); }
-    50% { box-shadow: 0 8px 28px var(--shadow-medium), 0 0 0 12px rgba(247, 89, 171, 0); }
+
+    0%,
+    100% {
+        box-shadow: 0 6px 20px var(--shadow-medium), 0 0 0 0 rgba(247, 89, 171, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 8px 28px var(--shadow-medium), 0 0 0 12px rgba(247, 89, 171, 0);
+    }
 }
 
 .btn-next {
@@ -377,7 +446,7 @@ body {
 .btn-no {
     background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
     color: #666;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     font-size: clamp(0.85rem, 3vw, 1rem);
     padding: 14px 28px;
     position: absolute;
@@ -425,7 +494,7 @@ body {
     border-radius: var(--radius-lg);
     padding: 30px 25px;
     position: relative;
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(214, 51, 132, 0.1),
         0 0 0 1px rgba(255, 173, 210, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -456,12 +525,25 @@ body {
     animation: earWiggle 3s ease-in-out infinite;
 }
 
-.bubble-ears.left { left: 20px; }
-.bubble-ears.right { right: 20px; animation-delay: 0.5s; }
+.bubble-ears.left {
+    left: 20px;
+}
+
+.bubble-ears.right {
+    right: 20px;
+    animation-delay: 0.5s;
+}
 
 @keyframes earWiggle {
-    0%, 100% { transform: rotate(-10deg); }
-    50% { transform: rotate(10deg); }
+
+    0%,
+    100% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
 }
 
 .message-text {
@@ -485,7 +567,9 @@ body {
 }
 
 @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
 
 .apology-emoji-row {
@@ -501,20 +585,36 @@ body {
     display: inline-block;
 }
 
-.apology-emoji-row span:nth-child(1) { animation-delay: 0.1s; }
-.apology-emoji-row span:nth-child(2) { animation-delay: 0.2s; }
-.apology-emoji-row span:nth-child(3) { animation-delay: 0.3s; }
-.apology-emoji-row span:nth-child(4) { animation-delay: 0.4s; }
-.apology-emoji-row span:nth-child(5) { animation-delay: 0.5s; }
+.apology-emoji-row span:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.apology-emoji-row span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.apology-emoji-row span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.apology-emoji-row span:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.apology-emoji-row span:nth-child(5) {
+    animation-delay: 0.5s;
+}
 
 @keyframes emojiPop {
     0% {
         transform: scale(0) rotate(-20deg);
         opacity: 0;
     }
+
     60% {
         transform: scale(1.3) rotate(5deg);
     }
+
     100% {
         transform: scale(1) rotate(0deg);
         opacity: 1;
@@ -559,7 +659,7 @@ body {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: var(--radius-lg);
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(214, 51, 132, 0.08),
         0 0 0 1px rgba(255, 173, 210, 0.2);
     opacity: 0;
@@ -584,8 +684,15 @@ body {
 }
 
 @keyframes emojiFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 .reason-card p {
@@ -652,8 +759,13 @@ body {
     top: -12px;
 }
 
-.bear-ear.left { left: -5px; }
-.bear-ear.right { right: -5px; }
+.bear-ear.left {
+    left: -5px;
+}
+
+.bear-ear.right {
+    right: -5px;
+}
 
 .bear-ear::after {
     content: '';
@@ -676,8 +788,13 @@ body {
     top: 32px;
 }
 
-.bear-eye.left { left: 25px; }
-.bear-eye.right { right: 25px; }
+.bear-eye.left {
+    left: 25px;
+}
+
+.bear-eye.right {
+    right: 25px;
+}
 
 .bear-eye::after {
     content: '';
@@ -704,8 +821,15 @@ body {
 }
 
 @keyframes tearDrop {
-    0% { transform: translateX(-50%) translateY(0); opacity: 1; }
-    100% { transform: translateX(-50%) translateY(30px); opacity: 0; }
+    0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(30px);
+        opacity: 0;
+    }
 }
 
 .bear-nose {
@@ -823,6 +947,7 @@ body {
         transform: translateY(-10px) rotate(0deg) scale(1);
         opacity: 1;
     }
+
     100% {
         transform: translateY(100vh) rotate(720deg) scale(0.5);
         opacity: 0;
@@ -845,10 +970,23 @@ body {
 }
 
 @keyframes bounceIn {
-    0% { transform: scale(0.3); opacity: 0; }
-    50% { transform: scale(1.1); }
-    70% { transform: scale(0.95); }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    70% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .celebration-subtitle {
@@ -865,7 +1003,7 @@ body {
     -webkit-backdrop-filter: blur(10px);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 
+    box-shadow:
         0 10px 40px rgba(214, 51, 132, 0.12),
         0 0 0 1px rgba(255, 173, 210, 0.25);
     margin-bottom: 25px;
@@ -922,11 +1060,27 @@ body {
 }
 
 @keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    14% { transform: scale(1.2); }
-    28% { transform: scale(1); }
-    42% { transform: scale(1.2); }
-    56% { transform: scale(1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    14% {
+        transform: scale(1.2);
+    }
+
+    28% {
+        transform: scale(1);
+    }
+
+    42% {
+        transform: scale(1.2);
+    }
+
+    56% {
+        transform: scale(1);
+    }
 }
 
 .final-message p {
@@ -937,41 +1091,19 @@ body {
 }
 
 /* Music Toggle */
-.music-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 2px solid var(--pink-200);
-    cursor: pointer;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
 
-.music-toggle:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.95);
-    border-color: var(--pink-400);
-}
 
-.music-toggle.playing {
-    animation: musicBounce 1s ease-in-out infinite;
-    border-color: var(--pink-500);
-}
 
 @keyframes musicBounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 /* ============================
@@ -999,10 +1131,6 @@ body {
         padding-right: calc(15px + env(safe-area-inset-right));
     }
 
-    .music-toggle {
-        top: calc(15px + env(safe-area-inset-top));
-        right: calc(15px + env(safe-area-inset-right));
-    }
 }
 
 /* ---- Tablets & small laptops ---- */
@@ -1201,8 +1329,13 @@ body {
         top: 24px;
     }
 
-    .bear-eye.left { left: 18px; }
-    .bear-eye.right { right: 18px; }
+    .bear-eye.left {
+        left: 18px;
+    }
+
+    .bear-eye.right {
+        right: 18px;
+    }
 
     .bear-nose {
         width: 13px;
@@ -1295,13 +1428,6 @@ body {
     }
 
     /* Music toggle */
-    .music-toggle {
-        width: 38px;
-        height: 38px;
-        font-size: 17px;
-        top: 12px;
-        right: 12px;
-    }
 }
 
 /* ---- Very small phones (iPhone SE, etc) ---- */
@@ -1393,8 +1519,13 @@ body {
         top: 20px;
     }
 
-    .bear-eye.left { left: 15px; }
-    .bear-eye.right { right: 15px; }
+    .bear-eye.left {
+        left: 15px;
+    }
+
+    .bear-eye.right {
+        right: 15px;
+    }
 
     .question-text {
         font-size: 1.1rem;
@@ -1481,8 +1612,13 @@ body {
         top: 18px;
     }
 
-    .bear-eye.left { left: 13px; }
-    .bear-eye.right { right: 13px; }
+    .bear-eye.left {
+        left: 13px;
+    }
+
+    .bear-eye.right {
+        right: 13px;
+    }
 
     .bear-nose {
         width: 10px;
@@ -1528,9 +1664,19 @@ body {
    SPECIAL ANIMATIONS
    ============================ */
 @keyframes shakeNo {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-8px) rotate(-2deg); }
-    75% { transform: translateX(8px) rotate(2deg); }
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px) rotate(-2deg);
+    }
+
+    75% {
+        transform: translateX(8px) rotate(2deg);
+    }
 }
 
 .shake {
@@ -1538,9 +1684,19 @@ body {
 }
 
 @keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    60% { transform: scale(1.2); }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .pop-in {
@@ -1560,6 +1716,7 @@ body {
         transform: scale(0) rotate(0deg);
         opacity: 1;
     }
+
     100% {
         transform: scale(1.5) rotate(180deg) translate(var(--tx), var(--ty));
         opacity: 0;

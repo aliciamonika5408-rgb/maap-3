@@ -8,7 +8,6 @@ let currentScreen = 'screen-landing';
 let noCount = 0;
 let reasonIndex = 0;
 let reasonInterval = null;
-let musicPlaying = false;
 
 // --- DOM Elements ---
 const screens = {
@@ -25,8 +24,6 @@ const btnNextReasons = document.getElementById('btn-next-reasons');
 const btnYes = document.getElementById('btn-yes');
 const btnNo = document.getElementById('btn-no');
 const btnReplay = document.getElementById('btn-replay');
-const musicToggle = document.getElementById('music-toggle');
-const musicIcon = document.getElementById('music-icon');
 const bgMusic = document.getElementById('bg-music');
 const typewriterText = document.getElementById('typewriter-text');
 const typingCursor = document.getElementById('typing-cursor');
@@ -99,13 +96,13 @@ btnOpen.addEventListener('click', () => {
     }, 200);
     setTimeout(() => goToScreen('screen-apology'), 700);
 
-    // Try to play music
-    tryPlayMusic();
+    // Langsung unmute & play musik saat tombol pertama ditekan
+    playMusic();
 });
 
 // Also allow clicking the envelope
 document.getElementById('envelope').addEventListener('click', () => {
-    btnOpen.click();
+    btnOpen.click(); // btnOpen handler will handle music unmute
 });
 
 // --- Screen 2: Apology (Typewriter) ---
@@ -375,7 +372,7 @@ document.addEventListener('mousemove', (e) => {
 
 // Activate the escape behavior as soon as question screen shows
 const originalGoToScreen = goToScreen;
-goToScreen = function(screenId) {
+goToScreen = function (screenId) {
     originalGoToScreen(screenId);
     if (screenId === 'screen-question') {
         // Small delay then activate escape
@@ -511,61 +508,37 @@ btnReplay.addEventListener('click', () => {
     // Clear confetti
     confettiContainer.innerHTML = '';
 
-    // Stop music properly before replay
-    stopMusic();
-
     goToScreen('screen-landing');
 });
 
-// --- Music (fixed: no double playback) ---
+// --- Music: Auto-play on first interaction, no toggle ---
 let musicPlayPromise = null;
 
-function stopMusic() {
-    // Wait for any pending play promise before pausing
-    if (musicPlayPromise) {
-        musicPlayPromise.then(() => {
-            bgMusic.pause();
-            bgMusic.currentTime = 0;
-        }).catch(() => {});
-        musicPlayPromise = null;
-    } else {
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
+function playMusic() {
+    if (bgMusic.paused) {
+        bgMusic.volume = 0.3;
+        bgMusic.muted = false;
+        musicPlayPromise = bgMusic.play();
+        if (musicPlayPromise !== undefined) {
+            musicPlayPromise.catch((error) => {
+                console.log("Play failed:", error);
+            });
+        }
     }
-    musicPlaying = false;
-    musicIcon.textContent = '🔇';
-    musicToggle.classList.remove('playing');
 }
 
-function tryPlayMusic() {
-    // Always stop first to prevent double
-    if (musicPlaying) return; // Already playing, don't double
-
-    bgMusic.pause();
-    bgMusic.currentTime = 0;
+// Start muted on load (browser allows this), unmute on first interaction
+function initAutoplay() {
     bgMusic.volume = 0.3;
-
-    musicPlayPromise = bgMusic.play();
-    if (musicPlayPromise !== undefined) {
-        musicPlayPromise.then(() => {
-            musicPlaying = true;
-            musicIcon.textContent = '🎵';
-            musicToggle.classList.add('playing');
-        }).catch(() => {
-            musicPlaying = false;
-            musicIcon.textContent = '🔇';
-            musicToggle.classList.remove('playing');
-        });
-    }
+    bgMusic.muted = true;
+    bgMusic.play().catch(() => { });
 }
 
-musicToggle.addEventListener('click', () => {
-    if (musicPlaying) {
-        stopMusic();
-    } else {
-        tryPlayMusic();
-    }
-});
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAutoplay);
+} else {
+    initAutoplay();
+}
 
 // --- Touch Sparkle Effect ---
 document.addEventListener('click', (e) => {
