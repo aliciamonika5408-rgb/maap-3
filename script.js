@@ -110,12 +110,12 @@ document.getElementById('envelope').addEventListener('click', () => {
 
 // --- Screen 2: Apology (Typewriter) ---
 const apologyMessages = [
-    "Arya... aku tau kamu lagi kesel sama aku 😿",
-    "Dan aku tau mungkin aku emang salah...",
-    "Tapi aku mau kamu tau satu hal...",
-    "Aku beneran sayang sama kamu 💕",
-    "Lebih dari yang bisa aku ungkapin dengan kata-kata...",
-    "Maafin aku ya? 🥺"
+    "Arya... aku tau kamu lagi sedih karna akuuuu...😿",
+    "Aku tau aku sering nyakitinn kamu..",
+    "Aku tau aku sering bikin kamu kecewaa...",
+    "Dan mungkin aku belum jadi yang terbaik buat kamuu...",
+    "Aku tauu, aku salaaa besarrr...",
+    "Tolong maaafinn ciaaaa yyaaaa...."
 ];
 
 let messageIndex = 0;
